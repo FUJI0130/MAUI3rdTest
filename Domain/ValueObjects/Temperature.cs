@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using Domain.Helpers;
 
 namespace Domain.ValueObjects
 {
@@ -16,7 +14,7 @@ namespace Domain.ValueObjects
         public Temperature(double temp)
         {
             _temp = temp;
-            _temp = RoundDouble();
+            _temp = FloatHelpers.RoundDouble(_temp,decimalPoint);
 
         }
 
@@ -25,12 +23,7 @@ namespace Domain.ValueObjects
             return _temp == other._temp;//ここで異なるインスタンスでも同じ物として扱えるかを確認する
         }
 
-        private double RoundDouble()
-        {
-            double result;
-            result = Math.Round(Convert.ToSingle( _temp), decimalPoint);
-            return result;
-        }
+
 
         public string DisplayValue()
         {
