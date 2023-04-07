@@ -1,0 +1,5 @@
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Sqlite.Core
+SQLitePCLRaw.bundle_green
+sqlite-net-pcl
+

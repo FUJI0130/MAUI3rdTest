@@ -14,7 +14,8 @@ namespace Domain.ValueObjects
         public Temperature(double temp)
         {
             _temp = temp;
-            _temp = FloatHelpers.RoundDouble(_temp,decimalPoint);
+            //_temp = FloatHelpers.RoundDouble(_temp,decimalPoint);
+            _temp = _temp.RoundDouble(decimalPoint);//拡張メソッドを使用した形に変更
 
         }
 
@@ -22,8 +23,6 @@ namespace Domain.ValueObjects
         {
             return _temp == other._temp;//ここで異なるインスタンスでも同じ物として扱えるかを確認する
         }
-
-
 
         public string DisplayValue()
         {

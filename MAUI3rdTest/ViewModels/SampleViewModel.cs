@@ -2,9 +2,10 @@
 
 namespace MAUI3rdTest.ViewModels;
 
-public partial class SampleViewModel : BaseViewModel
+public partial class SampleViewModel : ViewModel
 {
-	private ITairabaRepository _tairaba;
+	private IPhotosRepository _tairaba;
+	public IPhotosRepository _Test_tairaba;
 
 	int count = 0;
 
@@ -13,9 +14,13 @@ public partial class SampleViewModel : BaseViewModel
 	public SampleViewModel() { }
 
     //引数無い場合のコンストラクタ書いたら動いた //●sample開こうとしたときにここでエラー出てる
-    public SampleViewModel(ITairabaRepository tairaba)
+    public SampleViewModel(IPhotosRepository tairaba)
 	{
 		_tairaba = tairaba;
+		_Test_tairaba = tairaba;
+
+		//テスト用
+		//Search();//ダメだった　という事は渡されてるインターフェースがおかしい？
 	}
 
 	[ObservableProperty]
@@ -34,7 +39,7 @@ public partial class SampleViewModel : BaseViewModel
 		SemanticScreenReader.Announce(Message);
 	}
 
-	public int PhotoID { get; set; } = 0;
+	public int	  PhotoID { get; set; } = 0;
 	public string FishID_Text { get; set; }	= string.Empty;
 	public string TypeFishingID_Text { get; set; }	= string.Empty;
 	public string TairabaDataID_Text { get; set; } = string.Empty;
@@ -48,17 +53,17 @@ public partial class SampleViewModel : BaseViewModel
 	{
 		var entity = _tairaba.GetLatest(PhotoID);
 
-		if (entity != null)
+		if (entity != null)//moqのテストだと、ここがnullになっててスルーされてしまう
 		{
-			PhotoID = entity.PhotoId._id;
-			FishID_Text = entity.FishID.ToString();
-			TypeFishingID_Text = entity.TypeFishID.ToString();
-			TairabaDataID_Text = entity.TairabaDataId._id;
-			Weather_Text = entity.Weather.ToString();
-			DataDate_Text = entity.DataDate.ToString();
-			Temperture = entity.Temperature._temp;
-			Temperture_Text = entity.Temperature.DisplayValueWithSpace();
-			UserID_Text = entity.UserID.ToString();
+			PhotoID				= entity.PhotoId._id;
+			FishID_Text			= entity.FishID.ToString();
+			TypeFishingID_Text	= entity.TypeFishID.ToString();
+			TairabaDataID_Text	= entity.TairabaDataId._id;
+			Weather_Text		= entity.Weather._condition;
+			DataDate_Text		= entity.DataDate.ToString();
+			Temperture			= entity.Temperature._temp;
+			Temperture_Text		= entity.Temperature.DisplayValueWithSpace();
+			UserID_Text			= entity.UserID.ToString();
 		}
 	}
 }

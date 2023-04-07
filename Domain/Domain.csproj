@@ -17,4 +17,22 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Compile Remove="新しいフォルダー1\**" />
+	  <Compile Remove="新しいフォルダー\**" />
+	  <EmbeddedResource Remove="新しいフォルダー1\**" />
+	  <EmbeddedResource Remove="新しいフォルダー\**" />
+	  <MauiCss Remove="新しいフォルダー1\**" />
+	  <MauiCss Remove="新しいフォルダー\**" />
+	  <MauiXaml Remove="新しいフォルダー1\**" />
+	  <MauiXaml Remove="新しいフォルダー\**" />
+	  <None Remove="新しいフォルダー1\**" />
+	  <None Remove="新しいフォルダー\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
+	</ItemGroup>
+
 </Project>

@@ -54,6 +54,12 @@
 	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\SamplePageView.xaml.cs">
+	    <DependentUpon>SamplePageView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 	<PropertyGroup Label="MauiAppAccelerator">
 		<wizardVersion>v1.2.3</wizardVersion>
 		<projectType>MVVMToolkit</projectType>
