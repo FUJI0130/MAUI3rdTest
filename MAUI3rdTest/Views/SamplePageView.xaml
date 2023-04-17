@@ -36,6 +36,14 @@
 				Command="{Binding CounterClickedCommand}"
 				HorizontalOptions="Center" />
 
-		</VerticalStackLayout>
+            <Button
+				Text="test ConvertEntity"
+                Clicked="Test_Click_ConvertEntity"
+				SemanticProperties.Hint="ConvertEntityをテストする"
+				HorizontalOptions="Center" />
+
+
+
+        </VerticalStackLayout>
 	</ScrollView>
 </ContentPage>

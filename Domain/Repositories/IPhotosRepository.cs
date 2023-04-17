@@ -17,6 +17,15 @@ namespace Domain.Repositories
 
         public void dbFileCopy(object sender, EventArgs e);
 
+        public void InsertItem(PhotoTables InsertItems);
+        public void ConvertEntity();
+
+        public void ConvertTables(PhotoEntity convertEntity);
+
+
+
+
+
 
     }
 }
