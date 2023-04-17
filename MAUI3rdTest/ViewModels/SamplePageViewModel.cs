@@ -53,10 +53,12 @@ public partial class SamplePageViewModel : ViewModel
 	public string Temperture_Text { get; set; } = string.Empty;
 	public string UserID_Text { get; set; } = string.Empty;
 
+
+	//要はEntityからデータを取得する関数
 	public void Search()
 	{
 		//var entity = _tairaba.GetLatestItem(PhotoID);
-		var entity = _tairaba.GetLatest(PhotoID);
+		var entity = _tairaba.GetLatest(PhotoID);//名前が不適切なので変える。+適切な機能を持った関数を作る
 
 		if (entity != null)//moqのテストだと、ここがnullになっててスルーされてしまう
 		{

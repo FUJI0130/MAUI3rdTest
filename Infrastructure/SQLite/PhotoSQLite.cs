@@ -160,6 +160,10 @@ namespace Infrastructure.SQLite
             //query = conn.Query<PhotoTables>("select * from Photos", "A%");//テストのビルドエラー出なくなったけど、ここでこれやっても中身何も入ってないっぽい
             query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
 
+
+            //
+
+
             string check_TypeFishID = "";
             string check_FishID = "";
 
@@ -181,11 +185,49 @@ namespace Infrastructure.SQLite
         }
 
 
-                
+        //製作中　 //テスト用に写真をDBにアップする処理が必要
+        public void UploadImage()
+        {
+
+        }
+
+        //製作中　 //テスト用にデータをアップロードする処理が必要
+        public void InsertNewData()
+        {
+
+        }
+
+
+        //製作中　 //テスト用にDBのデータを確認する処理が必要
+        public List<PhotoTables> CheckDBData()
+        {
+            SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
+            //空のテーブルを作る
+            //conn.CreateTable<PhotoTables>();
+
+            //変数の初期化
+            List<PhotoTables> query = new List<PhotoTables>();
+
+            query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
+
+            string check_TypeFishID = "";
+            string check_FishID = "";
+
+            foreach (PhotoTables item in query)
+            {
+                System.Diagnostics.Debug.WriteLine("item is : " + item);
+
+                check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
+                check_FishID = item.釣れた魚ID.ToString();
+            }
+
+            return query;
+
+        }
 
 
         //製作中//  ほぼ完成？　 dbファイルをアプリで使う場所にコピーする処理   //●Viewが開かれた時に処理されるようになっていると、Viewはデバッグしづらい場所なので、この処理の中身自体もデバッグしづらくなってしまうのでは？？？ //☆Viewの所でAddして処理されてる（View が開かれた時の動作で、この中の処理が行われている）
-        public async void dbFileCopy(object sender, EventArgs e)
+        public async void dbFileCopy_LocalToApp(object sender, EventArgs e)
         {
             ////"/data/user/0/net.moonmile.sample.maui.mauisqlite/files/sample.db"
             //"/data/user/0/com.companyname.MAUI3rdTest/files/tairaba.db"// デバッグしてみたら出た

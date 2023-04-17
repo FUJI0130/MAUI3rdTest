@@ -41,6 +41,49 @@
                 Clicked="Test_Click_ConvertEntity"
 				SemanticProperties.Hint="ConvertEntityをテストする"
 				HorizontalOptions="Center" />
+            
+            <Button
+				Text="test InsertDB"
+                Clicked="Test_Click_InsertDB"
+				SemanticProperties.Hint="InsertDBをテストする"
+				HorizontalOptions="Center" />
+            
+            
+            <Button
+				Text="test CheckDBdata"
+                Clicked="Test_Click_CheckDBdata"
+				SemanticProperties.Hint="CheckDBdataをテストする"
+				HorizontalOptions="Center" />
+
+            <CollectionView
+                x:Name="coll"
+                SelectionMode="Single"
+                >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding PhotoID}"				VerticalOptions="Center" Margin="5,0,0,0"/>
+                            <Label Text="釣れた魚ID"			Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="釣り物ID"			Grid.Column="2" VerticalOptions="Center" />
+                            <Label Text="タイラバデータID"	Grid.Column="3" VerticalOptions="Center" />
+                            <Label Text="天気"				Grid.Column="4" VerticalOptions="Center" />
+                            <Label Text="日付"				Grid.Column="5" VerticalOptions="Center" />
+                            <Label Text="水温"				Grid.Column="6" VerticalOptions="Center" />
+                            <Label Text="ユーザーID"			Grid.Column="7" VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
 

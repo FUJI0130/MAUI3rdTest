@@ -90,7 +90,7 @@ public class SampleViewModelTest
 
         //●ここで非同期処理のテストしたいけど方法がわからん //privateになってたから、それだけか？？
 
-        //test_PhotoSQLite.dbFileCopy();
+        //test_PhotoSQLite.dbFileCopy_LocalToApp();
     }
 
 

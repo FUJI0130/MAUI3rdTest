@@ -15,16 +15,20 @@ namespace Domain.Repositories
         //IReadOnlyList<PhotoEntity> GetLatestItem(int id);
         //IReadOnlyList<PhotoTables> GetLatest(int id);
 
-        public void dbFileCopy(object sender, EventArgs e);
+        public void dbFileCopy_LocalToApp(object sender, EventArgs e);
 
         public void InsertItem(PhotoTables InsertItems);
         public void ConvertEntity();
 
         public void ConvertTables(PhotoEntity convertEntity);
 
+        public void UploadImage();
 
 
+        public void InsertNewData();
 
+
+        public List<PhotoTables> CheckDBData();
 
 
     }
