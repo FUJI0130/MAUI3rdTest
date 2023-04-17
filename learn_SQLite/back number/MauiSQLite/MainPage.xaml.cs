@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿//using System.IO;
 using System.Text;
 
 namespace MauiSQLite;
@@ -12,11 +12,11 @@ public partial class MainPage : ContentPage
 	}
 
 
-	//☆この処理だと、アプリを落とすと全部リセットされてた
-
-	//DBのデータをdbファイルからコピーしてくる必要があるらしい
-	private async void MainPage_Loaded(object sender, EventArgs e)
-	{	
+	
+    //DBのデータをdbファイルからコピーしてくる必要があるらしい	//☆この処理だと、アプリを落とすと全部リセットされてた
+    private async void MainPage_Loaded(object sender, EventArgs e)
+	{
+        //"/data/user/0/net.moonmile.sample.maui.mauisqlite/files/sample.db"
         string path			= Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/sample.db";//こっちはアプリの保存先の設定androidの時はデバッグログで場所追えるらしい
 
         System.Diagnostics.Debug.WriteLine($"path: {path}");

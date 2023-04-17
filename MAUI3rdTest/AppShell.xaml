@@ -16,6 +16,6 @@
 		Shell.NavBarIsVisible="true"
 		Title="Sample"
 		Icon="iconsample.png"
-		ContentTemplate="{DataTemplate views:SamplePage}"
+		ContentTemplate="{DataTemplate views:SamplePageView}"
 		Route="SamplePage" />
 </Shell>

@@ -11,9 +11,11 @@ namespace Domain.Repositories
 {
     public interface IPhotosRepository
     {
-        IReadOnlyList<PhotoEntity> GetLatestItem(int id);
+        PhotoEntity GetLatest(int id);
+        //IReadOnlyList<PhotoEntity> GetLatestItem(int id);
         //IReadOnlyList<PhotoTables> GetLatest(int id);
 
+        public void dbFileCopy(object sender, EventArgs e);
 
 
     }

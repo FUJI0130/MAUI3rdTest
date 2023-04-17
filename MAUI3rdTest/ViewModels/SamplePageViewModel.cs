@@ -1,8 +1,9 @@
 ﻿using Domain.Repositories;
+using Infrastructure.SQLite;
 
 namespace MAUI3rdTest.ViewModels;
 
-public partial class SampleViewModel : ViewModel
+public partial class SamplePageViewModel : ViewModel
 {
 	private IPhotosRepository _tairaba;
 	public IPhotosRepository _Test_tairaba;
@@ -11,10 +12,13 @@ public partial class SampleViewModel : ViewModel
 
 
 	//とりあえずテストの間だけでも置いとく
-	public SampleViewModel() { }
+	public SamplePageViewModel()
+	:this(new PhotoSQLite())
+	{ 
+	}
 
     //引数無い場合のコンストラクタ書いたら動いた //●sample開こうとしたときにここでエラー出てる
-    public SampleViewModel(IPhotosRepository tairaba)
+    public SamplePageViewModel(IPhotosRepository tairaba)
 	{
 		_tairaba = tairaba;
 		_Test_tairaba = tairaba;
@@ -51,6 +55,7 @@ public partial class SampleViewModel : ViewModel
 
 	public void Search()
 	{
+		//var entity = _tairaba.GetLatestItem(PhotoID);
 		var entity = _tairaba.GetLatest(PhotoID);
 
 		if (entity != null)//moqのテストだと、ここがnullになっててスルーされてしまう
@@ -66,4 +71,6 @@ public partial class SampleViewModel : ViewModel
 			UserID_Text			= entity.UserID.ToString();
 		}
 	}
+
+
 }

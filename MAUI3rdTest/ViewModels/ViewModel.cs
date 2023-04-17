@@ -5,11 +5,19 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 
-public abstract class ViewModel : INotifyPropertyChanged
-{
-    public event PropertyChangedEventHandler PropertyChanged;
+//それぞれnewしてからビルドは通った。　後でViewModelの中でSetPropertyが機能するか確認したい
 
-    protected bool SetProperty<T>(ref T field,
+public abstract class ViewModel :ObservableObject //☆ここをObservableObject  //: INotifyPropertyChanged　//これにするとビルド通らなかった。
+{
+    public new event PropertyChangedEventHandler PropertyChanged;//new書いてみた
+
+
+    //●ObservableObjectの中に、SetPropertyが実装されているらしいので、それの私用を調べてみたい
+    //もし、ここに書いている内容と同じ様な処理であれば、ここに書いているのは書かずに使えるかも？？
+
+    //もしくはここでnew書くだけで使える？？
+
+    protected new bool SetProperty<T>(ref T field,//new書いてみた
         T value, [CallerMemberName] string propertyName = null)
     {
         if (Equals(field, value))

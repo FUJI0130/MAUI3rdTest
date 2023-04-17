@@ -1,6 +1,9 @@
 ﻿using Domain.Entity;
 using Domain.Repositories;
+using Infrastructure.SQLite;
 using MAUI3rdTest.ViewModels;
+using MAUI3rdTest.Views;
+using Microsoft.EntityFrameworkCore.Sqlite.Storage.Internal;
 using Moq;
 using System.Diagnostics;
 
@@ -11,7 +14,7 @@ public class SampleViewModelTest
     [Fact]
     public void 最初のモックテスト()
     {
-        var viewModel = new SampleViewModel(new TairabaMock());
+        var viewModel = new SamplePageViewModel(new TairabaMock());
 
         viewModel.Search();//この中でGetLatestしてる
         Assert.Equal(1, viewModel.PhotoID);
@@ -66,6 +69,39 @@ public class SampleViewModelTest
         viewModelmoq.Search();//entityがnullになってるのがうまくいってない原因
 
         string test2 = viewModelmoq.FishID_Text;
-        Assert.Equal("マダイ",test2);
+        Assert.Equal("マダイ", test2);
+    }
+
+    [Fact]
+    public void 最初のSQLite関数のテスト()
+    {
+        PhotoSQLite test_PhotoSQLite = new PhotoSQLite();
+
+        //var PhotoSQLite_Mock = new Mock<PhotoSQLite>();
+
+        //string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//"C:\\Users\\TIPC0038\\Documents"
+        //string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//
+
+        //Console.WriteLine(path);
+
+        //test_PhotoSQLite.ConvertEntity();
+
+        //●ここで非同期処理のテストしたいけど方法がわからん //privateになってたから、それだけか？？
+
+        test_PhotoSQLite.dbFileCopy();
+    }
+
+
+    [Fact]
+    public void SamplePageView上でパスを確認するテスト()
+    {
+        SamplePageViewModel viewModel = new SamplePageViewModel();  
+        //SamplePageView view = new SamplePageView(viewModel);//これ書くとエラー出る
+        //SamplePageView view = new SamplePageView();//エラー消えない  //コンストラクタ無しでテスト
+        //SamplePageView view = new SamplePageView();//これをここでテストすること自体が不可能な気がしてきた  //ダメだった　//既に消してた///非同期処理の関数消してみる
+
+
+
+
     }
 }

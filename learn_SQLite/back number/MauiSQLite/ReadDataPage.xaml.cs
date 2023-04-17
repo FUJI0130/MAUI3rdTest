@@ -20,6 +20,7 @@ public partial class ReadDataPage : ContentPage
 		context = new FisheriesDbContext();
 		//非同期処理でデータを読みに行ってるっぽい　ToListでListに格納？
 		var items = await context.Users.ToListAsync();
+		//xamlの中で定義されてた（CollectionView)
 		coll.ItemsSource = items;//表示する項目を設定している（画面に表示する）
     }
 
@@ -38,11 +39,9 @@ public partial class ReadDataPage : ContentPage
 	// 新規/更新画面から戻った時
 	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
 	{
-		if (_item == null) return;
-		if (_item.Id == 0 )
-		{
-            context.Users.Add(_item);
-        }
+		if (_item == null)	return;
+		if (_item.Id == 0 )	context.Users.Add(_item);
+        
         await context.SaveChangesAsync();
         var items = await context.Users.ToListAsync();
 		coll.ItemsSource = items;
