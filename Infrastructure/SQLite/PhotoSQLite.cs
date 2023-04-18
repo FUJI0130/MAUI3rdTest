@@ -71,7 +71,41 @@ namespace Infrastructure.SQLite
         }
 
         //製作中//  //TablesからEntityに変換する処理（の予定）
-        public void ConvertEntity()
+        public List<PhotoEntity> ConvertEntities()
+        {
+            var result = new List<PhotoEntity>();
+            var resultDBdatas = GetDBdatas();
+
+            foreach(PhotoTables items in resultDBdatas)
+            {
+                PhotoTables resultitem = new PhotoTables();
+                resultitem = items;
+                result.Add(ConvertEntity(ref resultitem));
+            }
+            return result;
+        }
+
+        public PhotoEntity ConvertEntity(ref PhotoTables item)
+        {
+
+            PhotoEntity result = new PhotoEntity(
+                item.写真ID,//1
+                item.釣れた魚ID,//2
+                item.釣り物ID,//3
+                item.タイラバデータID,//4
+                item.天気,//5
+                Convert.ToDateTime(item.日付),//6
+                item.水温,//7
+                item.ユーザーID//8
+                );
+
+            return result;
+        }
+
+
+
+        //製作中//  //TablesからEntityに変換する処理（の予定）
+        public void Test_ConvertEntities()
         {
             //●Tablesの中のカラムをひとつづつ取り出す方法確率する必要ある
 
@@ -177,7 +211,6 @@ namespace Infrastructure.SQLite
 
         }
 
-
         //製作中//  //EntityからTablesに変換する処理
         public void ConvertTables(PhotoEntity convertEntity)
         {
@@ -199,7 +232,7 @@ namespace Infrastructure.SQLite
 
 
         //製作中　 //テスト用にDBのデータを確認する処理が必要
-        public List<PhotoTables> CheckDBData()
+        public List<PhotoTables> GetDBdatas()
         {
             SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
             //空のテーブルを作る
@@ -222,7 +255,6 @@ namespace Infrastructure.SQLite
             }
 
             return query;
-
         }
 
 

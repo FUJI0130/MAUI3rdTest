@@ -86,7 +86,7 @@ public class SampleViewModelTest
 
         //Console.WriteLine(path);
 
-        //test_PhotoSQLite.ConvertEntity();
+        //test_PhotoSQLite.ConvertEntities();
 
         //●ここで非同期処理のテストしたいけど方法がわからん //privateになってたから、それだけか？？
 
@@ -127,7 +127,7 @@ public class SampleViewModelTest
 
         
 
-        testPhotoSQLite.ConvertEntity();
+        testPhotoSQLite.ConvertEntities();
     }
 
 

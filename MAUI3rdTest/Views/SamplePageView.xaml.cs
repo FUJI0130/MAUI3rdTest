@@ -25,11 +25,11 @@ public partial class SamplePageView : ContentPage
         this.Loaded += _viewModel._Test_tairaba.dbFileCopy_LocalToApp;//名前変更
     }
 
-    public void Test_Click_ConvertEntity(object sender, EventArgs args)
+    public void Test_Click_ConvertEntities(object sender, EventArgs args)
     {
         //Debug.WriteLine("Click_ConvertEntity");//動作確認OK
 
-        _viewModel._Test_tairaba.ConvertEntity();//なんか入ってたので取れてるっぽい　３つ入ってた              
+        _viewModel._Test_tairaba.ConvertEntities();//なんか入ってたので取れてるっぽい　３つ入ってた              
 
     }
 
@@ -42,7 +42,7 @@ public partial class SamplePageView : ContentPage
 
     public void Test_Click_CheckDBdata(object sender, EventArgs args)
     {
-        List<PhotoTables> result = _viewModel._Test_tairaba.CheckDBData();
+        List<PhotoTables> result = _viewModel._Test_tairaba.GetDBdatas();
         coll.ItemsSource = result;//●現時点でこの処理の意味が全く無い 23/4/17 16:01
 
         //●ここの時点で、viewModelのプロパティにEntityから取った値を与えておけば、画面に表示が出来るはず

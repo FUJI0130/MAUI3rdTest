@@ -13,7 +13,7 @@ public partial class ReadDataPage : ContentPage
 	}
 	FisheriesDbContext context;
 
-	//データを読み込むボタンがクリックされた時の処理
+	//☆データを読み込むボタンがクリックされた時の処理
     private async void Button_Clicked(object sender, EventArgs e)
 	{
 		//多分コンストラクタが読み込まれた時点でOnConfiguringでデータを読み込んでる // SQLiteから読み込み

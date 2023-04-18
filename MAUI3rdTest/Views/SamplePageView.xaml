@@ -38,7 +38,7 @@
 
             <Button
 				Text="test ConvertEntity"
-                Clicked="Test_Click_ConvertEntity"
+                Clicked="Test_Click_ConvertEntities"
 				SemanticProperties.Hint="ConvertEntityをテストする"
 				HorizontalOptions="Center" />
             
