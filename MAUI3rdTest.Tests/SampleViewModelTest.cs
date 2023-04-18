@@ -20,7 +20,7 @@ public class SampleViewModelTest
         //viewModel.Search();//この中でGetLatestしてる
         //Assert.Equal(1, viewModel.PhotoID);
         //Assert.Equal("マダイ", viewModel.FishID_Text);
-        //Assert.Equal("タイラバ", viewModel.TypeFishingID_Text);
+        //Assert.Equal("タイラバ", viewModel.TypeFishID_Text);
         //Assert.Equal("00001", viewModel.TairabaDataID_Text);
         //Assert.Equal("晴れ", viewModel.Weather_Text);
         //Assert.Equal(12.30, viewModel.Temperture);

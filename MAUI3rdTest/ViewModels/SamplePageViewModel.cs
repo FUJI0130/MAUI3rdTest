@@ -45,7 +45,7 @@ public partial class SamplePageViewModel : ViewModel
 
 	public int	  PhotoID { get; set; } = 0;
 	public string FishID_Text { get; set; }	= string.Empty;
-	public string TypeFishingID_Text { get; set; }	= string.Empty;
+	public string TypeFishID_Text { get; set; }	= string.Empty;
 	public string TairabaDataID_Text { get; set; } = string.Empty;
 	public string Weather_Text { get; set; } = string.Empty;
 	public string DataDate_Text { get; set; } = string.Empty;
@@ -64,7 +64,7 @@ public partial class SamplePageViewModel : ViewModel
 		{
 			PhotoID				= entity.PhotoId._id;
 			FishID_Text			= entity.FishID.ToString();
-			TypeFishingID_Text	= entity.TypeFishID.ToString();
+			TypeFishID_Text		= entity.TypeFishID.ToString();
 			TairabaDataID_Text	= entity.TairabaDataId._id;
 			Weather_Text		= entity.Weather._condition;
 			DataDate_Text		= entity.DataDate.ToString();

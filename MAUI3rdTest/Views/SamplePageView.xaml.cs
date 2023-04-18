@@ -43,9 +43,7 @@ public partial class SamplePageView : ContentPage
     public void Test_Click_CheckDBdata(object sender, EventArgs args)
     {
         List<PhotoTables> result = _viewModel._Test_tairaba.GetDBdatas();
-        coll.ItemsSource = result;//●現時点でこの処理の意味が全く無い 23/4/17 16:01
-
-        //●ここの時点で、viewModelのプロパティにEntityから取った値を与えておけば、画面に表示が出来るはず
+        coll.ItemsSource = result;//ここでwatchしたら、中身入ってたけど、画面には何も表示されなかった
 
     }
 
