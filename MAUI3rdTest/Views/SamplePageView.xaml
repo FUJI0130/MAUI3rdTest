@@ -61,6 +61,10 @@
                 SelectionMode="Single"
                 >
                 <!--ItemsSourceのBinding にはListを渡せばいいのかもしれない-->
+                <!--List指定しても一向にバインディングできない　なんか一回だけ表示されてた事があったが、なぜかその後一度も再現が出来ない　-->
+                <!--ItemsSourceの部分消してもビルド通った　空のListも表示されていた -->
+                <!-- ItemsSource="{Binding _photoDbContext.Photos}" 設定したけどダメだった--> <!--下の方の設定は　{Binding _items[0].写真ID}　-->
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid HeightRequest="30">
@@ -74,8 +78,14 @@
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding _photos.写真ID}"				VerticalOptions="Center" Margin="5,0,0,0"/>
+                            <Label Text="{Binding PhotoID}"				VerticalOptions="Center" Margin="5,0,0,0"/>
+                            <!-- Binding Domain.DbContexts.Photos.写真ID ViewModelの中にDomainが無いとか出る　マジでどうしようもない -->
                             <!-- _photos とか設定できたけど何にも意味なかった -->
+                            <!-- _items　ビルド通ったけど何も表示できず -->
+                            <!-- _items[0].写真ID　ビルド通ったけど何も表示できず      バインドエラー：Domain.DbContext,Photosの中に_itemsプロパティが見つからないと出た -->
+                            <!-- 写真IDにするとビルド通らない　 -->
+                            <!-- _items[0].タイラバデータID　ビルド通ったけど何も表示できず -->
+                            <!-- _photos.写真ID		一回表示された時これを書いていたのではないかと思うが　表示できず　 -->
                             <Label Text="{Binding FishID_Text}"			Grid.Column="1" VerticalOptions="Center" />
 
                         </Grid>

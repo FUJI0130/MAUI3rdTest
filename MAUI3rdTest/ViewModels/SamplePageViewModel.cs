@@ -1,4 +1,5 @@
 ﻿using Domain.DbContexts;
+using Domain.Entity;
 using Domain.Repositories;
 using Infrastructure.SQLite;
 using System.ComponentModel.DataAnnotations;
@@ -13,9 +14,16 @@ public partial class SamplePageViewModel : ViewModel
 	int count = 0;
 
 
-    public List<Photos> _items { get; set; }
+    //public List<Photos> _items { get; set; }
+    public ObservableCollection<Photos> _items { get; set; }
 
-	public Photos _photos { get; set; }
+	public PhotoDbContext _photoDbContext { get; set; }//ここに設定する意味無かった可能性ある
+
+	public Photos _photos { get; set; }//これ書く意味無いかも
+
+
+	public List<PhotoEntity> _photoEntities = new List<PhotoEntity>();
+
 
 
     //とりあえずテストの間だけでも置いとく
