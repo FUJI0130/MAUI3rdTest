@@ -57,7 +57,6 @@
 
             <CollectionView
                 x:Name="coll"
-                ItemsSource="{Binding PhotoTables}"
                 SelectionMode="Single"
                 >
                 <CollectionView.ItemTemplate>

@@ -5,13 +5,12 @@ namespace MAUI3rdTest.Views;
 
 public partial class SamplePageView : ContentPage
 {
-    //public PhotoSQLite testPhotoSQLite = new PhotoSQLite();
 
 
-    //private SamplePageViewModel _viewModel = new SamplePageViewModel();
+
     public SamplePageViewModel _viewModel = new SamplePageViewModel();//test用に
 
-    //public SamplePageView(SamplePageViewModel viewModel)
+
     public SamplePageView()
     {
         InitializeComponent();
@@ -42,8 +41,11 @@ public partial class SamplePageView : ContentPage
 
     public void Test_Click_CheckDBdata(object sender, EventArgs args)
     {
-        List<PhotoTables> result = _viewModel._Test_tairaba.GetDBdatas();
-        coll.ItemsSource = result;//ここでwatchしたら、中身入ってたけど、画面には何も表示されなかった
+        //List<PhotoTables> result = _viewModel._Test_tairaba.GetDBdatas();
+        //coll.ItemsSource = result;//ここでwatchしたら、中身入ってたけど、画面には何も表示されなかった
+
+
+
 
     }
 

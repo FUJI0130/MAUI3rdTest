@@ -17,7 +17,7 @@ public partial class FisheriesListPage : ContentPage
 		//LINQで書かれてる
 
 				//from【<データ型>】<範囲変数名> in <データオブジェクトモデル名>
-		var q = from oroshi in context.T卸売				
+				var q = from oroshi in context.T卸売				
 				//join　【<データ型>】<範囲変数名> in <データオブジェクトモデル名> on <キー(左)> equals <キー(右)>【into <グループ名>】 
 				join subject in context.T品名 on oroshi.品名Id equals subject.Id
 				join market in context.T市場 on oroshi.市場Id equals market.Id

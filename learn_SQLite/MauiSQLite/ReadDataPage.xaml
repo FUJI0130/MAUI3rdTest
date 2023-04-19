@@ -31,7 +31,7 @@
 
             <CollectionView
                 x:Name="coll"
-                ItemsSource="{Binding Items}"
+
                 SelectionMode="Single"
                 >
                 <CollectionView.ItemTemplate>
