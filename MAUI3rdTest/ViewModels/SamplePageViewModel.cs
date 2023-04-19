@@ -1,5 +1,7 @@
-﻿using Domain.Repositories;
+﻿using Domain.DbContexts;
+using Domain.Repositories;
 using Infrastructure.SQLite;
+using System.ComponentModel.DataAnnotations;
 
 namespace MAUI3rdTest.ViewModels;
 
@@ -11,8 +13,13 @@ public partial class SamplePageViewModel : ViewModel
 	int count = 0;
 
 
-	//とりあえずテストの間だけでも置いとく
-	public SamplePageViewModel()
+    public List<Photos> _items { get; set; }
+
+	public Photos _photos { get; set; }
+
+
+    //とりあえずテストの間だけでも置いとく
+    public SamplePageViewModel()
 	:this(new PhotoSQLite())
 	{ 
 	}
@@ -73,6 +80,4 @@ public partial class SamplePageViewModel : ViewModel
 			UserID_Text			= entity.UserID.ToString();
 		}
 	}
-
-
 }

@@ -5,22 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//using Microsoft.EntityFrameworkCore;
+//using System.ComponentModel.DataAnnotations;
+
+
 namespace Domain.Tables
 {
     //これ、ここに変えたらビルド通った
-    [Table("Photos")]
+    [Table("Photos")]//一旦コメントアウト　23/4/19 10:21
     public sealed class PhotoTables
     {
-        //[Table("写真")]
-        //[Table("Photos")]
-        //public class 写真
-        //public class Photos
-        //{
         public byte[] 画像 { get; set; }//これで行けるか？
-            [PrimaryKey, AutoIncrement]
-            public int 写真ID { get; set; }
-            [MaxLength(250), Unique]
-            public string 釣れた魚ID { get; set; }
+       [PrimaryKey, AutoIncrement]// 一旦コメントアウト　23/4/19 10:21
+                                  //[key]
+        public int 写真ID { get; set; }
+        [MaxLength(250), Unique]// 一旦コメントアウト　23/4/19 10:21
+        public string 釣れた魚ID { get; set; }
             public string 釣り物ID { get; set; }
             public string タイラバデータID { get; set; }
             public string 天気 { get; set; }

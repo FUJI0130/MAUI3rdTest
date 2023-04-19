@@ -29,8 +29,6 @@ public class FisheriesDbContext : DbContext
     public DbSet<T市場> T市場 => Set<T市場>();
     public DbSet<T販売方法> T販売方法 => Set<T販売方法>();
 
-
-    //
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // modelBuilder.Entity<Users>().ToTable("Users");
