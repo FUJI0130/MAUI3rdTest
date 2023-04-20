@@ -24,11 +24,7 @@ namespace Infrastructure.SQLite
     //製作中//  //私用するViewModelのコンストラクタでnew している
     public sealed class PhotoSQLite : IPhotosRepository
     {
-        //PhotoTables photoTables;
-        //Photos photos;
-
         private SQLiteHelper _SQLhelper = new SQLiteHelper();
-
 
         public async void dbFileCopy_LocalToApp_Task()
         {
@@ -59,8 +55,7 @@ namespace Infrastructure.SQLite
             System.Diagnostics.Debug.WriteLine($"total: {size}");
         }
 
-
-        //製作中//  //TablesからEntityに変換する処理（の予定）
+        //一旦製作完了    //製作中//  //TablesからEntityに変換する処理（の予定）
         public List<PhotoEntity> ConvertEntities()
         {
             var result = new List<PhotoEntity>();
@@ -74,7 +69,7 @@ namespace Infrastructure.SQLite
             return result;
         }
 
-        //public PhotoEntity ConvertEntity(ref PhotoTables item)
+        //一旦製作完了    //public PhotoEntity ConvertEntity(ref PhotoTables item)
         public PhotoEntity ConvertEntity(ref Photos item)
         {
             PhotoEntity result = new PhotoEntity(
@@ -90,7 +85,6 @@ namespace Infrastructure.SQLite
 
             return result;
         }
-
 
         //製作中//DbContextで、データ追加する方法調べないといけない  　本に載ってる？？
         public void InsertItem(Photos InsertItems)
@@ -110,10 +104,6 @@ namespace Infrastructure.SQLite
         {
 
         }
-
-                       
-
-        
 
     }
 

@@ -54,21 +54,6 @@ public partial class SamplePageViewModel : ViewModel
 		SemanticScreenReader.Announce(Message);
 	}
 
-
-	//Listで渡して表示する時は、これは使えない気がする
-
-	//public int	  PhotoID { get; set; } = 0;
-	//public int	  写真ID { get; set; } = 0;//test
-	//public string FishID_Text { get; set; }	= string.Empty;
-	//public string TypeFishID_Text { get; set; }	= string.Empty;
-	//public string TairabaDataID_Text { get; set; } = string.Empty;
-	//public string Weather_Text { get; set; } = string.Empty;
-	//public string DataDate_Text { get; set; } = string.Empty;
-	//public double Temperture { get; set; } = 0;
-	//public string Temperture_Text { get; set; } = string.Empty;
-	//public string UserID_Text { get; set; } = string.Empty;
-
-
 	//要はEntityからデータを取得する関数
 	public void Search()
 	{

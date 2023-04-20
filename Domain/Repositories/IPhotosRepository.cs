@@ -20,7 +20,5 @@ namespace Domain.Repositories
         public void InsertItem(Photos InsertItems);
 
         public void UploadImage();
-
-
     }
 }
