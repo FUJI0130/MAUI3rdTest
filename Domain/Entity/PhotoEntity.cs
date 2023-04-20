@@ -6,24 +6,24 @@ namespace Domain.Entity
     {
         public PhotoEntity(int photoId, string fishID, string typeFishID, string tairabaDataID, string weather, DateTime dataDate, double temperature, string userID)
         {
-            PhotoId          = new PhotoID(photoId);
-            FishID           = fishID;
-            TypeFishID       = typeFishID;
-            TairabaDataId    = new TairabaDataID(tairabaDataID);
-            Weather          = new Weather(weather);
-            DataDate         = dataDate;
-            Temperature      = new Temperature(temperature);
-            UserID           = userID;
+            写真ID          = new PhotoID(photoId);
+            釣れた魚ID           = fishID;
+            釣り物ID       = typeFishID;
+            タイラバデータID    = new TairabaDataID(tairabaDataID);
+            天気          = new Weather(weather);
+            日付         = dataDate;
+            水温      = new Temperature(temperature);
+            ユーザーID           = userID;
          }
 
 
-        public PhotoID       PhotoId         { get;}
-        public string        FishID          { get;}
-        public string        TypeFishID      { get;}
-        public TairabaDataID TairabaDataId   { get;}
-        public Weather       Weather         { get;}
-        public DateTime      DataDate        { get;}
-        public Temperature   Temperature     { get;}
-        public string        UserID          { get;}
+        public PhotoID       写真ID             { get;}
+        public string        釣れた魚ID         { get;}
+        public string        釣り物ID           { get;}
+        public TairabaDataID タイラバデータID   { get;}
+        public Weather       天気               { get;}
+        public DateTime      日付               { get;}
+        public Temperature   水温               { get;}
+        public string        ユーザーID         { get;}
     }
 }

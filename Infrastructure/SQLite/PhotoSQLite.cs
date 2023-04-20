@@ -6,7 +6,7 @@ using System.Data;
 using System.Xml.Linq;
 
 using System.Collections.Generic;
-
+using Domain.DbContexts;
 
 namespace Infrastructure.SQLite
 {
@@ -78,21 +78,19 @@ namespace Infrastructure.SQLite
         public List<PhotoEntity> ConvertEntities()
         {
             var result = new List<PhotoEntity>();
-            var resultDBdatas = GetDBdatas();
+            var resultDBdatas = new DomainDbContext();
 
-            //foreach(PhotoTables items in resultDBdatas)
-            //{
-            //    PhotoTables resultitem = new PhotoTables();
-            //    resultitem = items;
-            //    result.Add(ConvertEntity(ref resultitem));
-            //}
+            foreach (Photos items in resultDBdatas.Photos)
+            {
+                var resultItems = items;
+                result.Add(ConvertEntity(ref resultItems));
+            }
             return result;
         }
 
         //public PhotoEntity ConvertEntity(ref PhotoTables item)
         public PhotoEntity ConvertEntity(ref Photos item)
         {
-
             PhotoEntity result = new PhotoEntity(
                 item.写真ID,//1
                 item.釣れた魚ID,//2
@@ -168,31 +166,31 @@ namespace Infrastructure.SQLite
     
         //製作中　 //テスト用にDBのデータを確認する処理が必要
         //public List<PhotoTables> GetDBdatas()
-        public List<Photos> GetDBdatas()
-        {
-            SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
-            //空のテーブルを作る
-            //conn.CreateTable<PhotoTables>();
+        //public List<Photos> GetDBdatas()
+        //{
+        //    SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
+        //    //空のテーブルを作る
+        //    //conn.CreateTable<PhotoTables>();
 
-            //変数の初期化
-            //List<PhotoTables> query = new List<PhotoTables>();
-            List<Photos> query = new List<Photos>();
+        //    //変数の初期化
+        //    //List<PhotoTables> query = new List<PhotoTables>();
+        //    List<Photos> query = new List<Photos>();
 
-            //query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
+        //    //query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
 
-            //string check_TypeFishID = "";
-            //string check_FishID = "";
+        //    //string check_TypeFishID = "";
+        //    //string check_FishID = "";
 
-            //foreach (PhotoTables item in query)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("item is : " + item);
+        //    //foreach (PhotoTables item in query)
+        //    //{
+        //    //    System.Diagnostics.Debug.WriteLine("item is : " + item);
 
-            //    check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
-            //    check_FishID = item.釣れた魚ID.ToString();
-            //}
+        //    //    check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
+        //    //    check_FishID = item.釣れた魚ID.ToString();
+        //    //}
 
-            return query;
-        }
+        //    return query;
+        //}
 
 
         //製作中//  ほぼ完成？　 dbファイルをアプリで使う場所にコピーする処理   //●Viewが開かれた時に処理されるようになっていると、Viewはデバッグしづらい場所なので、この処理の中身自体もデバッグしづらくなってしまうのでは？？？ //☆Viewの所でAddして処理されてる（View が開かれた時の動作で、この中の処理が行われている）
@@ -235,16 +233,11 @@ namespace Infrastructure.SQLite
         //public async Task dbFileCopy_LocalToApp_Task()
         public async void dbFileCopy_LocalToApp_Task()
         {
-            ////"/data/user/0/net.moonmile.sample.maui.mauisqlite/files/sample.db"
-            //"/data/user/0/com.companyname.MAUI3rdTest/files/tairaba.db"// デバッグしてみたら出た
             System.Diagnostics.Debug.WriteLine("test");
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
 
             _SQLhelper.ConnectionString = path;//test
 
-
-            //C:\Users\TIPC0038\Documents/sample.db
-            //"C:\\Users\\TIPC0038\\Documents/tairaba.db"
             System.Diagnostics.Debug.WriteLine($"path: {path}");
 
             ////アプリパッケージに含まれるファイルのストリームを開く                

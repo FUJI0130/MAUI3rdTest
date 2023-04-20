@@ -18,7 +18,7 @@ public partial class SamplePageViewModel : ViewModel
     //public ObservableCollection<Photos> _items { get; set; }
 	//public Photos _photos { get; set; }//これ書く意味無いかも
 
-	public PhotoDbContext _photoDbContext { get; set; }//ここに設定する意味無かった可能性ある
+	public DomainDbContext _photoDbContext { get; set; }//ここに設定する意味無かった可能性ある
 
 	public List<PhotoEntity> _photoEntities = new List<PhotoEntity>();
 

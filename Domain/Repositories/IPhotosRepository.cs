@@ -36,7 +36,7 @@ namespace Domain.Repositories
 
 
         //public List<PhotoTables> GetDBdatas();
-        public List<Photos> GetDBdatas();
+        //public List<Photos> GetDBdatas();
 
 
     }
