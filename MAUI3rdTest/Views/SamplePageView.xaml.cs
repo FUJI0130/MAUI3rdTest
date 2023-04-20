@@ -21,11 +21,16 @@ public partial class SamplePageView : ContentPage
         //BindingContext = _viewModel._photos.写真ID;//ここまでやったけど意味ないっぽい
 
 
-        BindingContext = _viewModel._photoDbContext;//試してみる 
+        //BindingContext = _viewModel._photoDbContext;//試してみる        
 
-        
 
-        this.Loaded += _viewModel._Test_tairaba.dbFileCopy_LocalToApp;//名前変更
+        //this.Loaded += _viewModel._Test_tairaba.dbFileCopy_LocalToApp;　//これに戻してもなぜかｄｂファイル府反映されてない様に見える　          //dbContextに変わっても、これが無いと成立しないはず //名前変更
+
+        //_viewModel._Test_tairaba.dbFileCopy_LocalToApp;
+
+
+        Task.Run(() => _viewModel._Test_tairaba.dbFileCopy_LocalToApp_Task());//出来た 　これでいつでもファイル反映できる     //戻しても反映されてなかったのでもう一度試す //ダメだった //Task.Run()書いてみた  //これだとビルドは通るけど、実行されてないっぽい
+
     }
 
     public void Test_Click_ConvertEntities(object sender, EventArgs args)

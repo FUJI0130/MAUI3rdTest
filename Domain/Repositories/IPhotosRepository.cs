@@ -17,6 +17,10 @@ namespace Domain.Repositories
 
         public void dbFileCopy_LocalToApp(object sender, EventArgs e);
 
+        //public Task dbFileCopy_LocalToApp_Task();
+        public void dbFileCopy_LocalToApp_Task();
+
+
         //public void InsertItem(PhotoTables InsertItems);
         public void InsertItem(Photos InsertItems);
         public List<PhotoEntity> ConvertEntities();
