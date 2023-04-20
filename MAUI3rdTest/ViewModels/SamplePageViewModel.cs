@@ -1,6 +1,7 @@
 ﻿using Domain.DbContexts;
 using Domain.Entity;
 using Domain.Repositories;
+using Domain.Tables;
 using Infrastructure.SQLite;
 using System.ComponentModel.DataAnnotations;
 

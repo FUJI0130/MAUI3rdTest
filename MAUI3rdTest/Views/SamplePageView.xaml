@@ -3,8 +3,10 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MAUI3rdTest.ViewModels"
              xmlns:dbs="clr-namespace:Domain.DbContexts;assembly=Domain"
+             xmlns:tbls="clr-namespace:Domain.Tables;assembly=Domain"
 			 x:Class="MAUI3rdTest.Views.SamplePageView"
-			 x:DataType="dbs:Photos">
+			 x:DataType="tbls:Photos">
+    <!--x:DataType="dbs:Photos">-->
     <!--x:DataType="vm:SamplePageViewModel"> 置いておく-->
     <!--x:DataType="dbs:PhotoDbContext"> -->
 	<ScrollView>
