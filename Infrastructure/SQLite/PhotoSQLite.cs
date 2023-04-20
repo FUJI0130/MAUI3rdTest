@@ -25,23 +25,40 @@ namespace Infrastructure.SQLite
     public sealed class PhotoSQLite : IPhotosRepository
     {
         //PhotoTables photoTables;
-        Photos photos;
+        //Photos photos;
 
         private SQLiteHelper _SQLhelper = new SQLiteHelper();
 
 
-        //製作中//DbContextで、データ追加する方法調べないといけない  　本に載ってる？？
-        public void InsertItem(Photos InsertItems)
+        public async void dbFileCopy_LocalToApp_Task()
         {
-            //using (var _database = new SQLiteConnection(SQLiteHelper.ConnectionString))
-            //var _SQLhelper = new SQLiteHelper();
-            //using (var _database = new SQLiteConnection(_SQLhelper.ConnectionString))
-            //{
-            //    int result = 0;
+            System.Diagnostics.Debug.WriteLine("test");
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
 
-            //    result = _database.InsertOrReplace(InsertItems);
-            //}
+            _SQLhelper.ConnectionString = path;//test
+
+            System.Diagnostics.Debug.WriteLine($"path: {path}");
+
+            ////アプリパッケージに含まれるファイルのストリームを開く                
+            using var stream = await FileSystem.OpenAppPackageFileAsync("tairaba.db");//上でそれっぽいパスが出たので試してみる//逆だった。　こっちがRawファイルっぽい//これ違った。上のpathで開いてるsample.dbとこれは別。こっちはアプリパッケージに含まれるファイル
+
+            using var reader = new BinaryReader(stream);//ストリームで開いてから、バイナリリーダーに渡す
+
+            ////ファイルの書込み先の設定
+            using var fs = System.IO.File.OpenWrite(path);//ファイルの書込み？
+            using var writer = new BinaryWriter(fs);
+
+            long size = 0;
+            while (true)
+            {
+                var data = reader.ReadBytes(1024 * 1024);
+                writer.Write(data);
+                size += data.Length;
+                if (data.Length < 1024 * 1024) break;
+            }
+            System.Diagnostics.Debug.WriteLine($"total: {size}");
         }
+
 
         //製作中//  //TablesからEntityに変換する処理（の予定）
         public List<PhotoEntity> ConvertEntities()
@@ -75,7 +92,18 @@ namespace Infrastructure.SQLite
         }
 
 
+        //製作中//DbContextで、データ追加する方法調べないといけない  　本に載ってる？？
+        public void InsertItem(Photos InsertItems)
+        {
+            //using (var _database = new SQLiteConnection(SQLiteHelper.ConnectionString))
+            //var _SQLhelper = new SQLiteHelper();
+            //using (var _database = new SQLiteConnection(_SQLhelper.ConnectionString))
+            //{
+            //    int result = 0;
 
+            //    result = _database.InsertOrReplace(InsertItems);
+            //}
+        }
 
         //製作中　 //テスト用に写真をDBにアップする処理が必要
         public void UploadImage()
@@ -83,41 +111,9 @@ namespace Infrastructure.SQLite
 
         }
 
-        //製作中　 //テスト用にデータをアップロードする処理が必要
-        public void InsertNewData()
-        {
-
-        }    
                        
 
-        public async void dbFileCopy_LocalToApp_Task()
-        {
-            System.Diagnostics.Debug.WriteLine("test");
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
-
-            _SQLhelper.ConnectionString = path;//test
-
-            System.Diagnostics.Debug.WriteLine($"path: {path}");
-
-            ////アプリパッケージに含まれるファイルのストリームを開く                
-            using var stream = await FileSystem.OpenAppPackageFileAsync("tairaba.db");//上でそれっぽいパスが出たので試してみる//逆だった。　こっちがRawファイルっぽい//これ違った。上のpathで開いてるsample.dbとこれは別。こっちはアプリパッケージに含まれるファイル
-
-            using var reader = new BinaryReader(stream);//ストリームで開いてから、バイナリリーダーに渡す
-
-            ////ファイルの書込み先の設定
-            using var fs = System.IO.File.OpenWrite(path);//ファイルの書込み？
-            using var writer = new BinaryWriter(fs);
-
-            long size = 0;
-            while (true)
-            {
-                var data = reader.ReadBytes(1024 * 1024);
-                writer.Write(data);
-                size += data.Length;
-                if (data.Length < 1024 * 1024) break;
-            }
-            System.Diagnostics.Debug.WriteLine($"total: {size}");
-        }
+        
 
     }
 

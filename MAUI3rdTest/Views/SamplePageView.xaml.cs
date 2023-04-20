@@ -33,7 +33,7 @@ public partial class SamplePageView : ContentPage
 
     public void Test_Click_InsertDB(object sender, EventArgs args)
     {
-        //_viewModel._Test_tairaba.InsertNewData();
+
     }
 
     private async void Test_Click_CheckDBdata(object sender, EventArgs args)
