@@ -30,18 +30,17 @@ namespace Infrastructure.SQLite
         private SQLiteHelper _SQLhelper = new SQLiteHelper();
 
 
-        //製作中//  
-        //public void InsertItem(PhotoTables InsertItems)
+        //製作中//DbContextで、データ追加する方法調べないといけない  　本に載ってる？？
         public void InsertItem(Photos InsertItems)
         {
             //using (var _database = new SQLiteConnection(SQLiteHelper.ConnectionString))
-            var _SQLhelper = new SQLiteHelper();
-            using (var _database = new SQLiteConnection(_SQLhelper.ConnectionString))
-            {
-                int result = 0;
+            //var _SQLhelper = new SQLiteHelper();
+            //using (var _database = new SQLiteConnection(_SQLhelper.ConnectionString))
+            //{
+            //    int result = 0;
 
-                result = _database.InsertOrReplace(InsertItems);
-            }
+            //    result = _database.InsertOrReplace(InsertItems);
+            //}
         }
 
         //製作中//  //TablesからEntityに変換する処理（の予定）
@@ -77,10 +76,10 @@ namespace Infrastructure.SQLite
 
 
         //製作中//  //EntityからTablesに変換する処理
-        public void ConvertTables(PhotoEntity convertEntity)
-        {
-            //●Tablesの中のカラムにデータを入れる方法
-        }
+        //public void ConvertTables(PhotoEntity convertEntity)
+        //{
+        //    //●Tablesの中のカラムにデータを入れる方法
+        //}
 
 
         //製作中　 //テスト用に写真をDBにアップする処理が必要
@@ -94,46 +93,8 @@ namespace Infrastructure.SQLite
         {
 
         }    
+                       
 
-
-        //製作中//  ほぼ完成？　 dbファイルをアプリで使う場所にコピーする処理   //●Viewが開かれた時に処理されるようになっていると、Viewはデバッグしづらい場所なので、この処理の中身自体もデバッグしづらくなってしまうのでは？？？ //☆Viewの所でAddして処理されてる（View が開かれた時の動作で、この中の処理が行われている）
-        //public async void dbFileCopy_LocalToApp(object sender, EventArgs e)
-        //{
-        //    ////"/data/user/0/net.moonmile.sample.maui.mauisqlite/files/sample.db"
-        //    //"/data/user/0/com.companyname.MAUI3rdTest/files/tairaba.db"// デバッグしてみたら出た
-        //    System.Diagnostics.Debug.WriteLine("test");
-        //    string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
-
-        //    _SQLhelper.ConnectionString = path;//test
-
-
-        //    //C:\Users\TIPC0038\Documents/sample.db
-        //    //"C:\\Users\\TIPC0038\\Documents/tairaba.db"
-        //    System.Diagnostics.Debug.WriteLine($"path: {path}");
-
-        //    ////アプリパッケージに含まれるファイルのストリームを開く                
-        //    using var stream = await FileSystem.OpenAppPackageFileAsync("tairaba.db");//上でそれっぽいパスが出たので試してみる//逆だった。　こっちがRawファイルっぽい//これ違った。上のpathで開いてるsample.dbとこれは別。こっちはアプリパッケージに含まれるファイル
-
-        //    using var reader = new BinaryReader(stream);//ストリームで開いてから、バイナリリーダーに渡す
-
-        //    ////ファイルの書込み先の設定
-        //    using var fs = System.IO.File.OpenWrite(path);//ファイルの書込み？
-        //    using var writer = new BinaryWriter(fs);
-
-        //    long size = 0;
-        //    while (true)
-        //    {
-        //        var data = reader.ReadBytes(1024 * 1024);
-        //        writer.Write(data);
-        //        size += data.Length;
-        //        if (data.Length < 1024 * 1024) break;
-        //    }
-        //    System.Diagnostics.Debug.WriteLine($"total: {size}");
-        //}
-
-
-
-        //public async Task dbFileCopy_LocalToApp_Task()
         public async void dbFileCopy_LocalToApp_Task()
         {
             System.Diagnostics.Debug.WriteLine("test");
@@ -162,7 +123,6 @@ namespace Infrastructure.SQLite
             }
             System.Diagnostics.Debug.WriteLine($"total: {size}");
         }
-
 
     }
 

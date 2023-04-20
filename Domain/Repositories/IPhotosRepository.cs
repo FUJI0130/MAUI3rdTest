@@ -20,7 +20,7 @@ namespace Domain.Repositories
         //public PhotoEntity ConvertEntity(ref PhotoTables item);
         public PhotoEntity ConvertEntity(ref Photos item);
 
-        public void ConvertTables(PhotoEntity convertEntity);
+        //public void ConvertTables(PhotoEntity convertEntity);
 
         public void UploadImage();
 
