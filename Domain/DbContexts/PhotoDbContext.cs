@@ -19,6 +19,7 @@ namespace Domain.DbContexts
             optionsBuilder.UseSqlite($"Data Source ={path}");
         }
 
+        //public DbSet<Photos> Photos => Set<Photos>();
         public DbSet<Photos> Photos => Set<Photos>();
 
     }
@@ -27,6 +28,7 @@ namespace Domain.DbContexts
     {
         public byte[] 画像 { get; set; }
         [Key]//Kが小文字になっていた
+        //public int PhotoID { get; set; }//あかんかった　SQLのエラーになった（データベースにPhotoID が無いと出た）
         public int 写真ID { get; set; }
         public string 釣れた魚ID { get; set; }
         public string 釣り物ID { get; set; }

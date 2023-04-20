@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MAUI3rdTest.ViewModels"
+             xmlns:dbs="clr-namespace:Domain.DbContexts;assembly=Domain"
 			 x:Class="MAUI3rdTest.Views.SamplePageView"
-			 x:DataType="vm:SamplePageViewModel">
-
+			 x:DataType="dbs:Photos">
+    <!--x:DataType="vm:SamplePageViewModel"> 置いておく-->
+    <!--x:DataType="dbs:PhotoDbContext"> -->
 	<ScrollView>
 		<VerticalStackLayout
 			Spacing="25"
@@ -31,10 +33,14 @@
 				HorizontalOptions="Center" />
 
 			<Button
-				Text="{Binding Message}"
+				Text="test"
 				SemanticProperties.Hint="Counts the number of times you click"
-				Command="{Binding CounterClickedCommand}"
+
 				HorizontalOptions="Center" />
+
+            <!--Text="{Binding Message}"-->
+            <!--Command="{Binding CounterClickedCommand}"-->
+            <!---->
 
             <Button
 				Text="test ConvertEntity"
@@ -57,9 +63,13 @@
 
             <CollectionView
                 x:Name="coll"
-                ItemsSource="{Binding _items}"
+                
                 SelectionMode="Single"
                 >
+                <!--ItemsSource="{Binding Photos}"-->
+                
+                <!-- ItemsSource="{Binding _viewModel._photoDbContext}" -->
+                
                 <!--ItemsSourceのBinding にはListを渡せばいいのかもしれない-->
                 <!--List指定しても一向にバインディングできない　なんか一回だけ表示されてた事があったが、なぜかその後一度も再現が出来ない　-->
                 <!--ItemsSourceの部分消してもビルド通った　空のListも表示されていた -->
@@ -78,7 +88,7 @@
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding PhotoID}"				VerticalOptions="Center" Margin="5,0,0,0"/>
+                            <Label Text="{Binding 写真ID}"				VerticalOptions="Center" Margin="5,0,0,0"/>
                             <!-- Binding Domain.DbContexts.Photos.写真ID ViewModelの中にDomainが無いとか出る　マジでどうしようもない -->
                             <!-- _photos とか設定できたけど何にも意味なかった -->
                             <!-- _items　ビルド通ったけど何も表示できず -->
@@ -86,7 +96,7 @@
                             <!-- 写真IDにするとビルド通らない　 -->
                             <!-- _items[0].タイラバデータID　ビルド通ったけど何も表示できず -->
                             <!-- _photos.写真ID		一回表示された時これを書いていたのではないかと思うが　表示できず　 -->
-                            <Label Text="{Binding FishID_Text}"			Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="{Binding 釣れた魚ID}"			Grid.Column="1" VerticalOptions="Center" />
 
                         </Grid>
                     </DataTemplate>

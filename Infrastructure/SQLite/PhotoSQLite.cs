@@ -230,7 +230,7 @@ namespace Infrastructure.SQLite
 
         }
 
-
+    
         //製作中　 //テスト用にDBのデータを確認する処理が必要
         public List<PhotoTables> GetDBdatas()
         {
