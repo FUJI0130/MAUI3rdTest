@@ -38,17 +38,10 @@ public partial class SamplePageView : ContentPage
 
     private async void Test_Click_CheckDBdata(object sender, EventArgs args)
     {
-        //_viewModel._photoDbContext = new PhotoDbContext();
-
-        //var items = await _viewModel._photoDbContext.Photos.ToListAsync();//この中にデータ入ってるのは確認できた
-
-        //ObservableCollection<Photos> items_obsv = new ObservableCollection<Photos>(items);
-
         _viewModel._photoEntities = _viewModel._Test_tairaba.ConvertEntities();
 
         ObservableCollection<PhotoEntity> items_obsv = new ObservableCollection<PhotoEntity>(_viewModel._photoEntities);
 
         coll.ItemsSource = items_obsv;
-
     }
 }

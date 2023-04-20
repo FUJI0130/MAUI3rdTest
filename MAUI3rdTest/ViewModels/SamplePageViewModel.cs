@@ -57,7 +57,7 @@ public partial class SamplePageViewModel : ViewModel
 
 	//Listで渡して表示する時は、これは使えない気がする
 
-	public int	  PhotoID { get; set; } = 0;
+	//public int	  PhotoID { get; set; } = 0;
 	//public int	  写真ID { get; set; } = 0;//test
 	//public string FishID_Text { get; set; }	= string.Empty;
 	//public string TypeFishID_Text { get; set; }	= string.Empty;
@@ -72,23 +72,23 @@ public partial class SamplePageViewModel : ViewModel
 	//要はEntityからデータを取得する関数
 	public void Search()
 	{
-		//var entity = _tairaba.GetLatestItem(PhotoID);
-		var entity = _tairaba.GetLatest(PhotoID);//名前が不適切なので変える。+適切な機能を持った関数を作る
-		//var entity = _tairaba.GetLatest(写真ID);//test
+		////var entity = _tairaba.GetLatestItem(PhotoID);
+		//var entity = _tairaba.GetLatest(PhotoID);//名前が不適切なので変える。+適切な機能を持った関数を作る
+		////var entity = _tairaba.GetLatest(写真ID);//test
 
-		if (entity != null)//moqのテストだと、ここがnullになっててスルーされてしまう
-		{
-			//写真ID				= entity.PhotoId._id;//test
+		//if (entity != null)//moqのテストだと、ここがnullになっててスルーされてしまう
+		//{
+		//	//写真ID				= entity.PhotoId._id;//test
 
-			//PhotoID				= entity.PhotoId._id;
-			//FishID_Text			= entity.FishID.ToString();
-			//TypeFishID_Text		= entity.TypeFishID.ToString();
-			//TairabaDataID_Text	= entity.TairabaDataId._id;
-			//Weather_Text		= entity.Weather._condition;
-			//DataDate_Text		= entity.DataDate.ToString();
-			//Temperture			= entity.Temperature._temp;
-			//Temperture_Text		= entity.Temperature.DisplayValueWithSpace();
-			//UserID_Text			= entity.UserID.ToString();
-		}
+		//	//PhotoID				= entity.PhotoId._id;
+		//	//FishID_Text			= entity.FishID.ToString();
+		//	//TypeFishID_Text		= entity.TypeFishID.ToString();
+		//	//TairabaDataID_Text	= entity.TairabaDataId._id;
+		//	//Weather_Text		= entity.Weather._condition;
+		//	//DataDate_Text		= entity.DataDate.ToString();
+		//	//Temperture			= entity.Temperature._temp;
+		//	//Temperture_Text		= entity.Temperature.DisplayValueWithSpace();
+		//	//UserID_Text			= entity.UserID.ToString();
+		//}
 	}
 }

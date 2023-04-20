@@ -11,7 +11,7 @@ namespace Domain.Repositories
 {
     public interface IPhotosRepository
     {
-        PhotoEntity GetLatest(int id);
+        //PhotoEntity GetLatest(int id);
         //IReadOnlyList<PhotoEntity> GetLatestItem(int id);
         //IReadOnlyList<PhotoTables> GetLatest(int id);
 
