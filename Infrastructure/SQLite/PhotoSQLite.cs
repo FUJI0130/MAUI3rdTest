@@ -30,36 +30,6 @@ namespace Infrastructure.SQLite
         private SQLiteHelper _SQLhelper = new SQLiteHelper();
 
 
-        //最新のデータだけ　　（一応実装してみる　　使わないかもしれないが）
-        //public PhotoEntity GetLatest(int id)
-        //{  
-        //    var ResultList = new PhotoEntity(
-        //        1,
-        //        "fishID",
-        //        "typeFishID",
-        //        "tairabaDataID",
-        //        "weather",
-        //        Convert.ToDateTime("2023/04/10 14:41:00"),
-        //        10.00,
-        //        "fishID"
-        //        );
-        //    return ResultList;
-        //}
-
-        //製作中//  //SQLからデータを取ってくる処理（その後Entityに変換する）        
-        //private IReadOnlyList<PhotoTables> GetAllItem()
-        //private IReadOnlyList<Photos> GetAllItem()
-        //{
-        //    //using (var _database = new SQLiteConnection(SQLiteHelper.ConnectionString))
-        //    var _SQLhelper = new SQLiteHelper();
-        //    using (var _database = new SQLiteConnection(_SQLhelper.ConnectionString))
-        //    {
-        //        //return _database.Table<PhotoTables>().ToList();
-        //        return _database.Table<Photos>().ToList();
-        //    }
-        //}
-
-
         //製作中//  
         //public void InsertItem(PhotoTables InsertItems)
         public void InsertItem(Photos InsertItems)
@@ -127,39 +97,39 @@ namespace Infrastructure.SQLite
 
 
         //製作中//  ほぼ完成？　 dbファイルをアプリで使う場所にコピーする処理   //●Viewが開かれた時に処理されるようになっていると、Viewはデバッグしづらい場所なので、この処理の中身自体もデバッグしづらくなってしまうのでは？？？ //☆Viewの所でAddして処理されてる（View が開かれた時の動作で、この中の処理が行われている）
-        public async void dbFileCopy_LocalToApp(object sender, EventArgs e)
-        {
-            ////"/data/user/0/net.moonmile.sample.maui.mauisqlite/files/sample.db"
-            //"/data/user/0/com.companyname.MAUI3rdTest/files/tairaba.db"// デバッグしてみたら出た
-            System.Diagnostics.Debug.WriteLine("test");
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
+        //public async void dbFileCopy_LocalToApp(object sender, EventArgs e)
+        //{
+        //    ////"/data/user/0/net.moonmile.sample.maui.mauisqlite/files/sample.db"
+        //    //"/data/user/0/com.companyname.MAUI3rdTest/files/tairaba.db"// デバッグしてみたら出た
+        //    System.Diagnostics.Debug.WriteLine("test");
+        //    string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
 
-            _SQLhelper.ConnectionString = path;//test
+        //    _SQLhelper.ConnectionString = path;//test
 
 
-            //C:\Users\TIPC0038\Documents/sample.db
-            //"C:\\Users\\TIPC0038\\Documents/tairaba.db"
-            System.Diagnostics.Debug.WriteLine($"path: {path}");
+        //    //C:\Users\TIPC0038\Documents/sample.db
+        //    //"C:\\Users\\TIPC0038\\Documents/tairaba.db"
+        //    System.Diagnostics.Debug.WriteLine($"path: {path}");
 
-            ////アプリパッケージに含まれるファイルのストリームを開く                
-            using var stream = await FileSystem.OpenAppPackageFileAsync("tairaba.db");//上でそれっぽいパスが出たので試してみる//逆だった。　こっちがRawファイルっぽい//これ違った。上のpathで開いてるsample.dbとこれは別。こっちはアプリパッケージに含まれるファイル
+        //    ////アプリパッケージに含まれるファイルのストリームを開く                
+        //    using var stream = await FileSystem.OpenAppPackageFileAsync("tairaba.db");//上でそれっぽいパスが出たので試してみる//逆だった。　こっちがRawファイルっぽい//これ違った。上のpathで開いてるsample.dbとこれは別。こっちはアプリパッケージに含まれるファイル
 
-            using var reader = new BinaryReader(stream);//ストリームで開いてから、バイナリリーダーに渡す
+        //    using var reader = new BinaryReader(stream);//ストリームで開いてから、バイナリリーダーに渡す
 
-            ////ファイルの書込み先の設定
-            using var fs = System.IO.File.OpenWrite(path);//ファイルの書込み？
-            using var writer = new BinaryWriter(fs);
+        //    ////ファイルの書込み先の設定
+        //    using var fs = System.IO.File.OpenWrite(path);//ファイルの書込み？
+        //    using var writer = new BinaryWriter(fs);
 
-            long size = 0;
-            while (true)
-            {
-                var data = reader.ReadBytes(1024 * 1024);
-                writer.Write(data);
-                size += data.Length;
-                if (data.Length < 1024 * 1024) break;
-            }
-            System.Diagnostics.Debug.WriteLine($"total: {size}");
-        }
+        //    long size = 0;
+        //    while (true)
+        //    {
+        //        var data = reader.ReadBytes(1024 * 1024);
+        //        writer.Write(data);
+        //        size += data.Length;
+        //        if (data.Length < 1024 * 1024) break;
+        //    }
+        //    System.Diagnostics.Debug.WriteLine($"total: {size}");
+        //}
 
 
 
