@@ -75,11 +75,6 @@ namespace Infrastructure.SQLite
         }
 
 
-        //製作中//  //EntityからTablesに変換する処理
-        //public void ConvertTables(PhotoEntity convertEntity)
-        //{
-        //    //●Tablesの中のカラムにデータを入れる方法
-        //}
 
 
         //製作中　 //テスト用に写真をDBにアップする処理が必要

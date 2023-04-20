@@ -11,25 +11,15 @@ namespace Domain.Repositories
 {
     public interface IPhotosRepository
     {
-        //public void dbFileCopy_LocalToApp(object sender, EventArgs e);
         public void dbFileCopy_LocalToApp_Task();
 
-        //public void InsertItem(PhotoTables InsertItems);
-        public void InsertItem(Photos InsertItems);
         public List<PhotoEntity> ConvertEntities();
-        //public PhotoEntity ConvertEntity(ref PhotoTables item);
+
         public PhotoEntity ConvertEntity(ref Photos item);
 
-        //public void ConvertTables(PhotoEntity convertEntity);
+        public void InsertItem(Photos InsertItems);
 
         public void UploadImage();
-
-
-        public void InsertNewData();
-
-
-        //public List<PhotoTables> GetDBdatas();
-        //public List<Photos> GetDBdatas();
 
 
     }
