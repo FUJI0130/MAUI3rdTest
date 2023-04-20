@@ -97,6 +97,24 @@ namespace Infrastructure.SQLite
 
             //    result = _database.InsertOrReplace(InsertItems);
             //}
+
+
+
+            //参考コード（MauiSQLiteからコピペしてきた）
+
+            ///// <summary>
+            ///// 新規作成
+            ///// </summary>
+            ///// <param name="sender"></param>
+            ///// <param name="e"></param>
+            //private async void NewItemClicked(object sender, EventArgs e)
+            //{
+            //    _item = new Users();
+            //    await this.Navigation.PushAsync(new NewItemPage() { BindingContext = _item });
+            //}
+
+
+
         }
 
         //製作中　 //テスト用に写真をDBにアップする処理が必要

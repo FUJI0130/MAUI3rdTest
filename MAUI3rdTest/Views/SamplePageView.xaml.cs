@@ -34,6 +34,18 @@ public partial class SamplePageView : ContentPage
     public void Test_Click_InsertDB(object sender, EventArgs args)
     {
 
+        ///// <summary>
+        ///// 新規作成
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private async void NewItemClicked(object sender, EventArgs e)
+        //{
+        //    _item = new Users();
+        //    await this.Navigation.PushAsync(new NewItemPage() { BindingContext = _item });
+        //}
+
+
     }
 
     private async void Test_Click_CheckDBdata(object sender, EventArgs args)
