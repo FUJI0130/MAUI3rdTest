@@ -17,9 +17,11 @@ namespace Domain.Repositories
 
         public void dbFileCopy_LocalToApp(object sender, EventArgs e);
 
-        public void InsertItem(PhotoTables InsertItems);
+        //public void InsertItem(PhotoTables InsertItems);
+        public void InsertItem(Photos InsertItems);
         public List<PhotoEntity> ConvertEntities();
-        public PhotoEntity ConvertEntity(ref PhotoTables item);
+        //public PhotoEntity ConvertEntity(ref PhotoTables item);
+        public PhotoEntity ConvertEntity(ref Photos item);
 
         public void ConvertTables(PhotoEntity convertEntity);
 
@@ -29,7 +31,8 @@ namespace Domain.Repositories
         public void InsertNewData();
 
 
-        public List<PhotoTables> GetDBdatas();
+        //public List<PhotoTables> GetDBdatas();
+        public List<Photos> GetDBdatas();
 
 
     }

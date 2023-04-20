@@ -14,18 +14,13 @@ public partial class SamplePageViewModel : ViewModel
 
 	int count = 0;
 
-
     //public List<Photos> _items { get; set; }
-    public ObservableCollection<Photos> _items { get; set; }
+    //public ObservableCollection<Photos> _items { get; set; }
+	//public Photos _photos { get; set; }//これ書く意味無いかも
 
 	public PhotoDbContext _photoDbContext { get; set; }//ここに設定する意味無かった可能性ある
 
-	public Photos _photos { get; set; }//これ書く意味無いかも
-
-
 	public List<PhotoEntity> _photoEntities = new List<PhotoEntity>();
-
-
 
     //とりあえずテストの間だけでも置いとく
     public SamplePageViewModel()
@@ -62,24 +57,24 @@ public partial class SamplePageViewModel : ViewModel
 
 	//Listで渡して表示する時は、これは使えない気がする
 
-	//public int	  PhotoID { get; set; } = 0;
-	public int	  写真ID { get; set; } = 0;//test
-	public string FishID_Text { get; set; }	= string.Empty;
-	public string TypeFishID_Text { get; set; }	= string.Empty;
-	public string TairabaDataID_Text { get; set; } = string.Empty;
-	public string Weather_Text { get; set; } = string.Empty;
-	public string DataDate_Text { get; set; } = string.Empty;
-	public double Temperture { get; set; } = 0;
-	public string Temperture_Text { get; set; } = string.Empty;
-	public string UserID_Text { get; set; } = string.Empty;
+	public int	  PhotoID { get; set; } = 0;
+	//public int	  写真ID { get; set; } = 0;//test
+	//public string FishID_Text { get; set; }	= string.Empty;
+	//public string TypeFishID_Text { get; set; }	= string.Empty;
+	//public string TairabaDataID_Text { get; set; } = string.Empty;
+	//public string Weather_Text { get; set; } = string.Empty;
+	//public string DataDate_Text { get; set; } = string.Empty;
+	//public double Temperture { get; set; } = 0;
+	//public string Temperture_Text { get; set; } = string.Empty;
+	//public string UserID_Text { get; set; } = string.Empty;
 
 
 	//要はEntityからデータを取得する関数
 	public void Search()
 	{
 		//var entity = _tairaba.GetLatestItem(PhotoID);
-		//var entity = _tairaba.GetLatest(PhotoID);//名前が不適切なので変える。+適切な機能を持った関数を作る
-		var entity = _tairaba.GetLatest(写真ID);//test
+		var entity = _tairaba.GetLatest(PhotoID);//名前が不適切なので変える。+適切な機能を持った関数を作る
+		//var entity = _tairaba.GetLatest(写真ID);//test
 
 		if (entity != null)//moqのテストだと、ここがnullになっててスルーされてしまう
 		{

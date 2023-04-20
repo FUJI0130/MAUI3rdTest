@@ -24,7 +24,8 @@ namespace Infrastructure.SQLite
     //製作中//  //私用するViewModelのコンストラクタでnew している
     public sealed class PhotoSQLite : IPhotosRepository
     {
-        PhotoTables photoTables;
+        //PhotoTables photoTables;
+        Photos photos;
 
         private SQLiteHelper _SQLhelper = new SQLiteHelper();
 
@@ -46,19 +47,22 @@ namespace Infrastructure.SQLite
         }
 
         //製作中//  //SQLからデータを取ってくる処理（その後Entityに変換する）        
-        private IReadOnlyList<PhotoTables> GetAllItem()
+        //private IReadOnlyList<PhotoTables> GetAllItem()
+        private IReadOnlyList<Photos> GetAllItem()
         {
             //using (var _database = new SQLiteConnection(SQLiteHelper.ConnectionString))
             var _SQLhelper = new SQLiteHelper();
             using (var _database = new SQLiteConnection(_SQLhelper.ConnectionString))
             {
-                return _database.Table<PhotoTables>().ToList();
+                //return _database.Table<PhotoTables>().ToList();
+                return _database.Table<Photos>().ToList();
             }
         }
 
 
         //製作中//  
-        public void InsertItem(PhotoTables InsertItems)
+        //public void InsertItem(PhotoTables InsertItems)
+        public void InsertItem(Photos InsertItems)
         {
             //using (var _database = new SQLiteConnection(SQLiteHelper.ConnectionString))
             var _SQLhelper = new SQLiteHelper();
@@ -76,16 +80,17 @@ namespace Infrastructure.SQLite
             var result = new List<PhotoEntity>();
             var resultDBdatas = GetDBdatas();
 
-            foreach(PhotoTables items in resultDBdatas)
-            {
-                PhotoTables resultitem = new PhotoTables();
-                resultitem = items;
-                result.Add(ConvertEntity(ref resultitem));
-            }
+            //foreach(PhotoTables items in resultDBdatas)
+            //{
+            //    PhotoTables resultitem = new PhotoTables();
+            //    resultitem = items;
+            //    result.Add(ConvertEntity(ref resultitem));
+            //}
             return result;
         }
 
-        public PhotoEntity ConvertEntity(ref PhotoTables item)
+        //public PhotoEntity ConvertEntity(ref PhotoTables item)
+        public PhotoEntity ConvertEntity(ref Photos item)
         {
 
             PhotoEntity result = new PhotoEntity(
@@ -113,25 +118,31 @@ namespace Infrastructure.SQLite
 
             //接続の確立
             //SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
-            SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
+            
+            //SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
+
+
             //空のテーブルを作る
             //conn.CreateTable<PhotoTables>();
 
             //変数の初期化
-            List<PhotoTables> query = new List<PhotoTables>();
+            //List<PhotoTables> query = new List<PhotoTables>();
 
-            query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
+            //List<Photos> query = new List<Photos>();
 
-            string check_TypeFishID = "";
-            string check_FishID = "";
+            //query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
+            //query = conn.Query<Photos>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
 
-            foreach (PhotoTables item in query)
-            {
-                System.Diagnostics.Debug.WriteLine("item is : " + item);
+            //string check_TypeFishID = "";
+            //string check_FishID = "";
 
-                check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
-                check_FishID = item.釣れた魚ID.ToString();
-            }
+            //foreach (PhotoTables item in query)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("item is : " + item);
+
+            //    check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
+            //    check_FishID = item.釣れた魚ID.ToString();
+            //}
 
         }
 
@@ -156,27 +167,29 @@ namespace Infrastructure.SQLite
 
     
         //製作中　 //テスト用にDBのデータを確認する処理が必要
-        public List<PhotoTables> GetDBdatas()
+        //public List<PhotoTables> GetDBdatas()
+        public List<Photos> GetDBdatas()
         {
             SQLiteConnection conn = new SQLiteConnection(_SQLhelper.ConnectionString);
             //空のテーブルを作る
             //conn.CreateTable<PhotoTables>();
 
             //変数の初期化
-            List<PhotoTables> query = new List<PhotoTables>();
+            //List<PhotoTables> query = new List<PhotoTables>();
+            List<Photos> query = new List<Photos>();
 
-            query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
+            //query = conn.Query<PhotoTables>("select * from Photos", "");//第２引数は、第１引数のSQL文の中で　？　が書かれてた場合に、それと置き換える文字？を渡すっぽい
 
-            string check_TypeFishID = "";
-            string check_FishID = "";
+            //string check_TypeFishID = "";
+            //string check_FishID = "";
 
-            foreach (PhotoTables item in query)
-            {
-                System.Diagnostics.Debug.WriteLine("item is : " + item);
+            //foreach (PhotoTables item in query)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("item is : " + item);
 
-                check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
-                check_FishID = item.釣れた魚ID.ToString();
-            }
+            //    check_TypeFishID = item.釣り物ID.ToString();//なんかここでEntity作れそうな気がしてきた
+            //    check_FishID = item.釣れた魚ID.ToString();
+            //}
 
             return query;
         }
