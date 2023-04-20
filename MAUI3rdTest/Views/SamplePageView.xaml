@@ -63,7 +63,7 @@
 
             <CollectionView
                 x:Name="coll"
-                
+
                 SelectionMode="Single"
                 >
                 <!--ItemsSource="{Binding Photos}"-->
@@ -79,24 +79,23 @@
                     <DataTemplate>
                         <Grid HeightRequest="30">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="28" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="27" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding 写真ID}"				VerticalOptions="Center" Margin="5,0,0,0"/>
-                            <!-- Binding Domain.DbContexts.Photos.写真ID ViewModelの中にDomainが無いとか出る　マジでどうしようもない -->
-                            <!-- _photos とか設定できたけど何にも意味なかった -->
-                            <!-- _items　ビルド通ったけど何も表示できず -->
-                            <!-- _items[0].写真ID　ビルド通ったけど何も表示できず      バインドエラー：Domain.DbContext,Photosの中に_itemsプロパティが見つからないと出た -->
-                            <!-- 写真IDにするとビルド通らない　 -->
-                            <!-- _items[0].タイラバデータID　ビルド通ったけど何も表示できず -->
-                            <!-- _photos.写真ID		一回表示された時これを書いていたのではないかと思うが　表示できず　 -->
-                            <Label Text="{Binding 釣れた魚ID}"			Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="{Binding 写真ID}"			    FontSize="10"	VerticalOptions="Center" Margin="0,0,0,0"/>
+                            <Label Text="{Binding 釣れた魚ID}"			FontSize="8"	Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="{Binding 釣り物ID}"			FontSize="8"	Grid.Column="2" VerticalOptions="Center" />
+                            <Label Text="{Binding タイラバデータID}"	FontSize="10"	Grid.Column="3" VerticalOptions="Center" />
+                            <Label Text="{Binding 天気}"			    FontSize="10"	Grid.Column="4" VerticalOptions="Center" />
+                            <Label Text="{Binding 日付}"			    FontSize="10"	Grid.Column="5" VerticalOptions="Center" />
+                            <Label Text="{Binding 水温}"			    FontSize="10"	Grid.Column="6" VerticalOptions="Center" />
+                            <Label Text="{Binding ユーザーID}"			FontSize="10"	Grid.Column="7" VerticalOptions="Center" />
 
                         </Grid>
                     </DataTemplate>
