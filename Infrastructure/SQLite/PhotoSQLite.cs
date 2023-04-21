@@ -124,6 +124,47 @@ namespace Infrastructure.SQLite
 
         }
 
+
+        //
+        public async void dbFileCopy_AppToLocal_Task()
+        {
+            System.Diagnostics.Debug.WriteLine("test");
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/tairaba.db";//欲しいファイルパス出た　 //こっちはアプリの保存先の設定　//☆ここの保存先のパスは別の所から読み込むときに使うので、使うクラスに設定するようにしないといけない
+
+            _SQLhelper.ConnectionString = path;//test
+
+            System.Diagnostics.Debug.WriteLine($"path: {path}");
+
+            ////アプリパッケージに含まれるファイルのストリームを開く                
+            using var stream = await FileSystem.OpenAppPackageFileAsync("tairaba.db");//上でそれっぽいパスが出たので試してみる//逆だった。　こっちがRawファイルっぽい//これ違った。上のpathで開いてるsample.dbとこれは別。こっちはアプリパッケージに含まれるファイル
+
+            //変更予定
+            using var streamData = new StreamReader(path);//これでいけるか？？(アプリ上でデータが追加されたDBのデータを入れたい)//多分、Dbcontextでusesqliteしてるパスと同じパスは指定出来てるように思う
+
+
+            using var reader = new BinaryReader(stream);//ストリームで開いてから、バイナリリーダーに渡す
+
+            ////ファイルの書込み先の設定
+            //using var fs = System.IO.File.OpenWrite(path);//ファイルの書込み？
+
+            //変更予定  //ここのパスは、dbファイルのパスなので、そのままtairaba.dbで、rawフォルダのファイルが更新される・・・？？
+            string raw_dir_tairabaDB_path = "tairaba.db";
+            using var fs = System.IO.File.OpenWrite(raw_dir_tairabaDB_path);
+            using var writer = new BinaryWriter(fs);
+
+            long size = 0;
+            while (true)
+            {
+                var data = reader.ReadBytes(1024 * 1024);
+                writer.Write(data);
+                size += data.Length;
+                if (data.Length < 1024 * 1024) break;
+            }
+            System.Diagnostics.Debug.WriteLine($"total: {size}");
+        }
+
+
+
     }
 
 }

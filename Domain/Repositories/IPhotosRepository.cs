@@ -14,6 +14,10 @@ namespace Domain.Repositories
     {
         public void dbFileCopy_LocalToApp_Task();
 
+
+        public void dbFileCopy_AppToLocal_Task();//test
+
+
         //public List<PhotoEntity> ConvertEntities();
         public List<PhotoEntity> ConvertEntities(ref DomainDbContext dbcontext);
 

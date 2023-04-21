@@ -69,6 +69,9 @@ public partial class SamplePageView : ContentPage
         await _viewModel._photoDbContext.SaveChangesAsync();
 
 
+        //ここでDBファイル更新してみる
+        await Task.Run(() =>  _viewModel._photoSQLite.dbFileCopy_AppToLocal_Task());
+
 
         var items = await _viewModel._photoDbContext.Photos.ToListAsync();
         coll.ItemsSource = items;
