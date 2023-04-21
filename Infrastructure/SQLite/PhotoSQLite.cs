@@ -83,7 +83,6 @@ namespace Infrastructure.SQLite
                 item.水温,//7
                 item.ユーザーID//8
                 );
-
             return result;
         }
 
