@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI3rdTest.Views.AddNewItemPage"
+             Title="AddNewItemPage">
+    <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+        <Label 
+            Text="データの追加"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button Text="追加"
+                Clicked="Button_Clicked" />
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection>
+                    <EntryCell Label="写真ID" Text="{Binding 写真ID}" Placeholder="0" />
+                    <EntryCell Label="釣れた魚ID" Text="{Binding 釣れた魚ID}" Placeholder="タイ" />
+                    <EntryCell Label="釣り物ID" Text="{Binding 釣り物ID}" Placeholder="タイラバ" />
+                    <EntryCell Label="タイラバデータID" Text="{Binding タイラバデータID}" Placeholder="00001" />
+                    <EntryCell Label="天気" Text="{Binding 天気}" Placeholder="晴れ" />
+                    <EntryCell Label="日付" Text="{Binding 日付}" Placeholder="2023/01/01 12:00:00" />
+                    <EntryCell Label="水温" Text="{Binding 水温}" Placeholder="15.50" />
+                    <EntryCell Label="ユーザーID" Text="{Binding ユーザーID}" Placeholder="userID_A" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </VerticalStackLayout>
+</ContentPage>

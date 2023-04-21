@@ -10,7 +10,7 @@ namespace MAUI3rdTest.ViewModels;
 public partial class SamplePageViewModel : ViewModel
 {
 	private IPhotosRepository _tairaba;
-	public IPhotosRepository _Test_tairaba;
+	public IPhotosRepository _photoSQLite;
 
 	int count = 0;
 
@@ -28,7 +28,8 @@ public partial class SamplePageViewModel : ViewModel
     public SamplePageViewModel(IPhotosRepository tairaba)
 	{
 		_tairaba = tairaba;
-		_Test_tairaba = tairaba;
+		_photoSQLite = tairaba;
+		_photoDbContext = new DomainDbContext();
 
 		//テスト用
 		//Search();//ダメだった　という事は渡されてるインターフェースがおかしい？

@@ -65,6 +65,15 @@
 				SemanticProperties.Hint="CheckDBdataをテストする"
 				HorizontalOptions="Center" />
 
+
+            <Button
+				Text="test AddNewItemData"
+                Clicked="NewItemClicked"
+				SemanticProperties.Hint="Photosに新しいデータを追加する処理をテストする"
+				HorizontalOptions="Center" />
+
+
+
             <CollectionView
                 x:Name="coll"
 

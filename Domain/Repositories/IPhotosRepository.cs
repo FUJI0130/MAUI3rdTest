@@ -1,4 +1,5 @@
-﻿using Domain.Entity;
+﻿using Domain.DbContexts;
+using Domain.Entity;
 using Domain.Tables;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,8 @@ namespace Domain.Repositories
     {
         public void dbFileCopy_LocalToApp_Task();
 
-        public List<PhotoEntity> ConvertEntities();
+        //public List<PhotoEntity> ConvertEntities();
+        public List<PhotoEntity> ConvertEntities(ref DomainDbContext dbcontext);
 
         public PhotoEntity ConvertEntity(ref Photos item);
 

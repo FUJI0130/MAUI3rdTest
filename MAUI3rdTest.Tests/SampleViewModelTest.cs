@@ -101,7 +101,7 @@ public class SampleViewModelTest
         //SamplePageView view = new SamplePageView(viewModel);//これ書くとエラー出る
         //SamplePageView view = new SamplePageView();//エラー消えない  //コンストラクタ無しでテスト
         //SamplePageView view = new SamplePageView();//これをここでテストすること自体が不可能な気がしてきた  //ダメだった　//既に消してた///非同期処理の関数消してみる
-        //viewModel._Test_tairaba
+        //viewModel._photoSQLite
 
 
 
@@ -113,7 +113,7 @@ public class SampleViewModelTest
     {
         SamplePageViewModel viewModel = new SamplePageViewModel();
 
-        //await Task.Run(() => viewModel._Test_tairaba.dbFileCopyAsyncTest());//たぶん非同期の書き方は出来てる気がするけど、前に出たエラーと同じエラーが出た（viewに渡すようにしたら解決した部分） //これでいけるか？？
+        //await Task.Run(() => viewModel._photoSQLite.dbFileCopyAsyncTest());//たぶん非同期の書き方は出来てる気がするけど、前に出たエラーと同じエラーが出た（viewに渡すようにしたら解決した部分） //これでいけるか？？
 
         //もうview呼んだ方がいいのでは？？？
 

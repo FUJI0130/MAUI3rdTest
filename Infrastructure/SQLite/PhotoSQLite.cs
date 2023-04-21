@@ -56,10 +56,11 @@ namespace Infrastructure.SQLite
         }
 
         //一旦製作完了    //製作中//  //TablesからEntityに変換する処理（の予定）
-        public List<PhotoEntity> ConvertEntities()
+        public List<PhotoEntity> ConvertEntities(ref DomainDbContext dbcontext)
         {
             var result = new List<PhotoEntity>();
-            var resultDBdatas = new DomainDbContext();
+            //var resultDBdatas = new DomainDbContext();
+            var resultDBdatas = dbcontext;
 
             foreach (Photos items in resultDBdatas.Photos)
             {
