@@ -18,6 +18,7 @@ public class TodoItemDatabase
         if (Database is not null)
             return;
 
+        //"/data/user/0/com.companyname.todosqlite/files/TodoSQLite.db3"
         string check = Constants.DatabasePath;//dbファイルの場所特定するのに使用
         Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         //var result = await Database.CreateTableAsync<TodoItem>();

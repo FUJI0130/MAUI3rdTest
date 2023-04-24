@@ -12,6 +12,8 @@ public static class Constants
         // enable multi-threaded database access
         SQLite.SQLiteOpenFlags.SharedCache;
 
+
+    //"/data/user/0/com.companyname.todosqlite/files/TodoSQLite.db3"
     public static string DatabasePath => 
         Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
     //Path.Combine("Resources/Raw/", DatabaseFilename);//これだとダメだった

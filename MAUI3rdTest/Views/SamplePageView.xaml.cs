@@ -70,7 +70,8 @@ public partial class SamplePageView : ContentPage
 
 
         //ここでDBファイル更新してみる
-        await Task.Run(() =>  _viewModel._photoSQLite.dbFileCopy_AppToLocal_Task());
+        //await Task.Run(() =>  _viewModel._photoSQLite.dbFileCopy_AppToLocal_Task());//ダメだった　rawフォルダのファイルがread-onlyでエラー
+
 
 
         var items = await _viewModel._photoDbContext.Photos.ToListAsync();
